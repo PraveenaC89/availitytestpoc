@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Card } from 'reactstrap';
-import { PaginationControls } from '@availity/pagination';
-//import { useEffect, useState } from 'react';
-//import { avUserApi } from '@availity/api-axios';
 
 class Content extends Component {
   constructor() {
