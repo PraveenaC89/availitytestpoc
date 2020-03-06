@@ -1,0 +1,8 @@
+{
+  "ms/api/availity/internal/spc/slotmachine/graphql": {
+    "file": "slotmachine.json"
+  },
+  "sdk/platform/v1/users": {
+    "file": "user.json"
+  }
+}
