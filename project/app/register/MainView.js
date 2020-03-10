@@ -16,7 +16,7 @@ const MainView = () => {
               </Button>
             </span>
           </NavLink>
-          {' | '}
+          {'   |   '}
           <NavLink exact to="/users" class="nav-item nav-link active col-4">
             <span>
               <Button className="mt-3" color="primary">
