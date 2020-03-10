@@ -18,6 +18,9 @@ class Content extends Component {
             <button class="btn btn-primary" onClick={this.get}>
               Get Data
             </button>
+            <button class="btn btn-primary" onClick={this.clear}>
+              Clear Data
+            </button>
           </p>
 
           <div>
@@ -52,9 +55,13 @@ class Content extends Component {
   get = () =>
     axios.get('https://jsonplaceholder.typicode.com/posts').then(result => {
       this.setState({ data: result.data });
-      console.log('inside get');
-      console.log(this.state.data);
+
+      return true;
     });
+
+  clear = () => {
+    this.setState({ data: [] });
+  };
 
   post = () => console.log('Post');
 }

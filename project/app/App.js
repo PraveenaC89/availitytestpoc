@@ -1,16 +1,14 @@
 import React from 'react';
-import { Container, Button } from 'reactstrap';
+import { Container, Button, Card } from 'reactstrap';
 import PageHeader from '@availity/page-header';
 import Spaces from '@availity/spaces';
 import BlockUi from 'react-block-ui';
 import { Footer, MemberInfo, SearchForm } from '@/components';
 import { useAppStore, useQueryParams } from '@/hooks';
-import Content from './register/Content';
+import MainView from './register/MainView';
 
 const App = () => {
   const queryParams = useQueryParams();
-
-  var search = false;
 
   const { clearMemberInfo, hasMemberInfo, loading } = useAppStore(store => ({
     clearMemberInfo: () => store.setMemberInfo(),
@@ -21,28 +19,23 @@ const App = () => {
   return (
     <Container data-testid="sso-container" className="container-sm">
       <Spaces spaceIds={[queryParams.spaceId]} clientId="test">
-        <PageHeader appName="Users" />
+        <PageHeader appName="Member Viewer" spaceId={queryParams.spaceId} />
+        <Card Body>
+          <MainView />
+        </Card>
+
         <BlockUi blocking={loading}>
-          {!search ? (
-            <Content />
+          {!hasMemberInfo ? (
+            <SearchForm />
           ) : (
-            <React.Fragment>
-              <PageHeader appName="ID Card Viewer" spaceId={queryParams.spaceId} />
-              <BlockUi blocking={loading}>
-                {!hasMemberInfo ? (
-                  <SearchForm />
-                ) : (
-                  <>
-                    <MemberInfo />
-                    <div className="d-flex justify-content-end">
-                      <Button className="mt-3" onClick={clearMemberInfo} color="primary">
-                        Go Back
-                      </Button>
-                    </div>
-                  </>
-                )}
-              </BlockUi>
-            </React.Fragment>
+            <>
+              <MemberInfo />
+              <div className="d-flex justify-content-end">
+                <Button className="mt-3" onClick={clearMemberInfo} color="primary">
+                  Go Back
+                </Button>
+              </div>
+            </>
           )}
         </BlockUi>
       </Spaces>
