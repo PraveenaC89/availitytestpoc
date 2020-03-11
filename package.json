@@ -63,6 +63,7 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "reactstrap": "^8.1.1",
+    "redux": "^4.0.5",
     "styled-components": "^4.4.1",
     "yup": "^0.28.0"
   },
@@ -76,7 +77,8 @@
     "husky": "^3.1.0",
     "jest-dom": "^4.0.0",
     "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "redux-immutable-state-invariant": "^2.1.0"
   },
   "availityWorkflow": true,
   "commitlint": {

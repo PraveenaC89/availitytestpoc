@@ -1,22 +1,26 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Container, Button, Card } from 'reactstrap';
 import PageHeader from '@availity/page-header';
+import { connect } from 'react-redux';
 
 import { AvForm, AvField, AvCheckbox, AvCheckboxGroup } from 'availity-reactstrap-validation';
+import createMember from '../redux/actions/RegisterAction';
 
 class MemberRegistration extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      memberDetails: {
-        name: '',
-        birthDate: '',
-        telephoneNumber: '',
-        emailId: '',
-        color: '',
-        location: '',
-      },
+      memberDetails: [
+        {
+          name: '',
+          birthDate: '',
+          telephoneNumber: '',
+          emailId: '',
+          color: '',
+          location: '',
+        },
+      ],
     };
   }
 
@@ -24,18 +28,25 @@ class MemberRegistration extends React.Component {
     this.setState(prevState => ({ ...prevState, name: event.target.value }));
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.props.dispatch(createMember(this.state.memberDetails));
+  };
+
   render() {
     return (
       <Container data-testid="sso-container" className="container-sm">
         <PageHeader appName="Registration" />
         <Card body>
-          <AvForm onSubmit={this.handleChange}>
+          <AvForm onSubmit={this.handleSubmit}>
             <div className="form-group-row">
               <AvField
                 class="col-sm-4"
                 name="name"
                 // eslint-disable-next-line react/destructuring-assignment
                 value={this.state.memberDetails.name}
+                onChange={this.handleSubmit}
                 label="Name"
                 type="text"
                 validate={{
@@ -91,10 +102,25 @@ class MemberRegistration extends React.Component {
               Submit
             </Button>
           </AvForm>
+          <div>
+            {this.props.memberDetails.map(memberDetails => (
+              <div key={memberDetails.name}> MemberDetails: {memberDetails.name}</div>
+            ))}
+          </div>
         </Card>
       </Container>
     );
   }
 }
 
-export default MemberRegistration;
+MemberRegistration.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  memberDetails: PropTypes.array.isRequired,
+};
+function mapStatetoProps(state) {
+  return {
+    memberDetails: state.memberDetails,
+  };
+}
+
+export default connect(mapStatetoProps)(MemberRegistration);

@@ -15,10 +15,10 @@ class Content extends Component {
       <Card body>
         <div>
           <p>
-            <button className="btn btn-primary" onClick={this.get}>
+            <button type="button" className="btn btn-primary" onClick={this.get}>
               Get Data
             </button>
-            <button className="btn btn-primary" onClick={this.clear}>
+            <button type="button" className="btn btn-primary" onClick={this.clear}>
               Clear Data
             </button>
           </p>
@@ -33,7 +33,8 @@ class Content extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.data.map(dt => {
+                {// eslint-disable-next-line react/destructuring-assignment
+                this.state.data.map(dt => {
                   return (
                     <>
                       <tr>
