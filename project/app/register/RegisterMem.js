@@ -35,7 +35,7 @@ const RegisterMem = () => {
           </div>
           <div className="form-group-row">
             <AvField
-              name="dateProp"
+              name="birthDate"
               label="Birth Date"
               type="text"
               validate={{ date: { format: 'MM/DD/YYYY' } }}
@@ -43,13 +43,13 @@ const RegisterMem = () => {
             />
           </div>
           <div className="form-group-row">
-            <AvField name="telephoneProp" label="Phone Number" type="text" validate={{ tel: true }} />
+            <AvField name="telephoneNumber" label="Phone Number" type="text" validate={{ tel: true }} />
           </div>
           <div className="form-group-row">
-            <AvField name="emailProp" label="Email" type="text" validate={{ email: true }} />
+            <AvField name="emailId" label="Email" type="text" validate={{ email: true }} />
           </div>
           <div className="form-group-row">
-            <AvCheckboxGroup inline name="maxCheckedCheckboxList" label="Color" validate={{ max: { value: 2 } }}>
+            <AvCheckboxGroup inline name="color" label="Color" validate={{ max: { value: 2 } }}>
               <AvCheckbox label="Blue" value="Blue" />
               <AvCheckbox label="Green" value="Green" />
               <AvCheckbox label="Yellow" value="Yellow" />
@@ -57,12 +57,7 @@ const RegisterMem = () => {
             </AvCheckboxGroup>
           </div>
           <div className="form-group-row">
-            <AvCheckboxGroup
-              inline
-              name="minCheckedCheckboxList"
-              label="Prefered Location"
-              validate={{ min: { value: 2 } }}
-            >
+            <AvCheckboxGroup inline name="location" label="Prefered Location" validate={{ min: { value: 2 } }}>
               <AvCheckbox label="Bulbasaur" value="Bulbasaur" />
               <AvCheckbox label="Squirtle" value="Squirtle" />
               <AvCheckbox label="Charmander" value="Charmander" />

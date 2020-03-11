@@ -15,17 +15,17 @@ class Content extends Component {
       <Card body>
         <div>
           <p>
-            <button class="btn btn-primary" onClick={this.get}>
+            <button className="btn btn-primary" onClick={this.get}>
               Get Data
             </button>
-            <button class="btn btn-primary" onClick={this.clear}>
+            <button className="btn btn-primary" onClick={this.clear}>
               Clear Data
             </button>
           </p>
 
           <div>
-            <table class="table table-striped table-inverse table-responsive">
-              <thead class="thead-inverse">
+            <table className="table table-striped table-inverse table-responsive">
+              <thead className="thead-inverse">
                 <tr>
                   <th>ID</th>
                   <th>User ID</th>
