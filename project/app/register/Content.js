@@ -7,6 +7,7 @@ class Content extends Component {
     super();
     this.state = {
       data: [],
+      createdData: [],
     };
   }
 
@@ -18,11 +19,20 @@ class Content extends Component {
             <button type="button" className="btn btn-primary" onClick={this.get}>
               Get Data
             </button>
+            <button type="button" className="btn btn-primary" onClick={this.create}>
+              Create Data
+            </button>
             <button type="button" className="btn btn-primary" onClick={this.clear}>
               Clear Data
             </button>
           </p>
-
+          <div>
+            Created Data :
+            {
+              // eslint-disable-next-line react/destructuring-assignment
+              this.state.createdData.toString
+            }
+          </div>
           <div>
             <table className="table table-striped table-inverse table-responsive">
               <thead className="thead-inverse">
@@ -59,6 +69,24 @@ class Content extends Component {
 
       return true;
     });
+
+  create = () =>
+    axios
+      .post('https://jsonplaceholder.typicode.com/posts', {
+        body: JSON.stringify({
+          title: 'foo',
+          body: 'bar',
+          userId: 1,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      .then(response => {
+        this.setState({ createdData: response.data });
+        return response.data;
+      })
+      .then(json => console.log(json));
 
   clear = () => {
     this.setState({ data: [] });
