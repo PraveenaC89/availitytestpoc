@@ -42,7 +42,7 @@ class MemberRegistration extends React.Component {
           <AvForm onSubmit={this.handleSubmit}>
             <div className="form-group-row">
               <AvField
-                class="col-sm-4"
+                className="col-sm-4"
                 name="name"
                 // eslint-disable-next-line react/destructuring-assignment
                 value={this.state.memberDetails.name}

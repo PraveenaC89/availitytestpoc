@@ -12,7 +12,7 @@ const RegisterMem = () => {
         <AvForm>
           <div className="form-group-row">
             <AvField
-              class="col-sm-4"
+              className="col-sm-4"
               name="name"
               label="Name"
               type="text"
