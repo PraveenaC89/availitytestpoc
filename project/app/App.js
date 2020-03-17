@@ -20,7 +20,7 @@ const App = () => {
     <Container data-testid="sso-container" className="container-sm">
       <Spaces spaceIds={[queryParams.spaceId]} clientId="test">
         <PageHeader appName="Member Viewer" spaceId={queryParams.spaceId} />
-        <Card Body>
+        <Card body>
           <MainView />
         </Card>
 
